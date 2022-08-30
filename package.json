@@ -8,7 +8,7 @@
     "dev": "nodemon index.js",
     "watch:js": "parcel watch ./public/js/index.js --out-dir  ./public/js -o bundle.js",
     "build:js": "parcel build ./public/js/index.js --out-dir  ./public/js -o bundle.js ",
-    "debug":"ndb server.js"
+    "debug": "ndb server.js"
   },
   "author": "Saud Chaudhary",
   "license": "ISC",

@@ -1,15 +1,10 @@
 <!-- section signup -->
-<section class="row register_section section">
-  <div class="col-12 d-flex flex-column align-items-center">
-    <h1><%= __('register') %> </h1>
+<section class="register_section section">
+  <form class="register_form form--register">
+    <div class="container">
+      <h1><%= __('register') %> </h1>
       <p><%= __('register_text') %> </p>
-  </div>
-  <div class="col-11 col-md-4 samp__img__container">
-    <img class="samp__img" src="/assets/register.svg" alt="register" />
-  </div>
-  <form class="col-md-7 register_form form--register" >
-    <div class="container col-12" style="width: 100%;">
-      
+      <img src="/assets/register.svg" alt="register" />
       <label for="fName"><b><%= __('first_name') %> </b></label
       ><input
         id="fName"
@@ -31,16 +26,13 @@
         placeholder="<%= __('email_placeholder') %>"
         name="email"
         required=""
-      />
-      <div style="width: 100%;">
-      <label for="psw"><b><b><%= __('password') %></b></label
+      /><label for="psw"><b><b><%= __('password') %></b></label
       ><input
         id="psw"
         type="password"
         placeholder="<%= __('password_placeholder') %>"
         name="psw"
         required=""
-        width="100%"
       /><label for="psw-repeat"><b><%= __('repeat_password') %></b></label
       ><input
         id="psw-repeat"
@@ -49,7 +41,6 @@
         name="psw-repeat"
         required=""
       />
-    </div>
       <p>
         <%= __('register_notice') %>
         <a href="#"> <%= __('terms_Condition') %> </a>.

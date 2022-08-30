@@ -153,7 +153,6 @@ app.set('layout admin-pages-setting', false);
 app.set('layout admin-products-setting', false);
 
 // 3) ROUTES
-app.use('/', viewRouter);
 
 // client side
 if (process.env.NODE_ENV === 'production') {
@@ -177,6 +176,8 @@ if (process.env.NODE_ENV === 'production') {
 
 }
 
+app.use('/', viewRouter);
+
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/lenses', lensRouter);
@@ -191,7 +192,8 @@ app.use('/api/pages', pageRouter);
 app.use('/api/favourite', favouritRouter);
 
 app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+  // next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+  res.redirect('/')
 });
 
 app.use(globalErrorHandler);

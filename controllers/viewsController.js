@@ -185,7 +185,7 @@ exports.getCart = (req, res) => {
 
 exports.getLoginForm = (req, res) => {
   if (res.locals.user) {
-    return res.redirect('/');
+    return res.redirect('/admin');
   }
 
   res.status(200).render('login', {

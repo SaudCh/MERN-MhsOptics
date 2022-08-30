@@ -87,16 +87,6 @@
                 >🇩🇪 Detsch</a
               >
             </li>
-            <li>
-              <a href="/setlocale/du" class="language-link" data-lang="du"
-                >🇩u Dutch</a
-              >
-            </li>
-            <li>
-              <a href="/setlocale/fr" class="language-link" data-lang="fr"
-                >FR French</a
-              >
-            </li>
           </ul>
         </div>
       </span>
@@ -188,23 +178,18 @@
     </div>
     <div class="lang_toggle_container">
       <span class="material-icons"> language </span>
-      <div class="avaliable_lang" style="width: 200px">
-        <div class="card">
-          <a href="/setlocale/en" class="language-link my-3 ms-2" data-lang="en"
+      <ul class="avaliable_lang">
+        <li>
+          <a href="/setlocale/en" class="language-link" data-lang="en"
             >🇬🇧 Eng</a
           >
-
-          <a href="/setlocale/de" class="language-link mb-3 ms-2" data-lang="de"
+        </li>
+        <li>
+          <a href="/setlocale/de" class="language-link" data-lang="de"
             >🇩🇪 Detsch</a
           >
-          <a href="/setlocale/du" class="language-link mb-3 ms-2" data-lang="du"
-            >🇩u Dutch</a
-          >
-          <a href="/setlocale/fr" class="language-link mb-3 ms-2" data-lang="fr"
-            >FR French</a
-          >
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
     <% if (locals.user){ %>
     <a href="#" class="nav__el--logout">
