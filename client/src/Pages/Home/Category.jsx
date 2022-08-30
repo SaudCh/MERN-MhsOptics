@@ -48,7 +48,7 @@ export default function Category() {
               />
             </figure>
 
-            <p className="text-center">Men</p>
+            <p className="text-center">{item.name}</p>
           </div>
         ))}
       </div>
