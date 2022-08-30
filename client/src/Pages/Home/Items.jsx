@@ -17,9 +17,11 @@ import { useTranslation } from "react-i18next";
 function Items() {
   const { t } = useTranslation();
   const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getProducts = async () => {
+      setIsLoading(true);
       await axios
         .get(`${process.env.REACT_APP_SERVER_URL}/api/products/`)
         .then(function (response) {
@@ -32,14 +34,31 @@ function Items() {
             ? error.response.data.message
             : error.message;
         });
+      setIsLoading(false);
     };
     getProducts();
   }, []);
 
   const { width } = useWindowDimensions();
   const visibleSlides = width > 992 ? 4 : width > 768 ? 3 : width > 576 ? 2 : 1;
-  if (items?.length === 0) {
-    return <div>Loading...</div>;
+  if (items?.length === 0 && isLoading === false) {
+    return (
+      <>
+        <div className="col-12 mt-2 text-center">
+          <h1 style={{ fontSize: 30, fontWeight: "bold" }}>
+            {t("our_best_items")}
+          </h1>
+        </div>
+        <div
+          className="d-flex justify-content-center align-items-center"
+          style={{ minHeight: "20vh" }}
+        >
+          <div>
+            <span>No Product Found</span>
+          </div>
+        </div>
+      </>
+    );
   }
   return (
     <section className="container-fluid mt-2">
@@ -49,34 +68,45 @@ function Items() {
             {t("our_best_items")}
           </h1>
         </div>
-        <CarouselProvider
-          className="relative mt-8"
-          isIntrinsicHeight={true}
-          naturalSlideWidth={250}
-          totalSlides={items?.length}
-          visibleSlides={visibleSlides}
-        >
-          {visibleSlides < items?.length && (
-            <ButtonBack className="home-item-chevron home-item-chevron-left">
-              <ChevronLeftIcon color="black" />
-            </ButtonBack>
-          )}
-          <Slider>
-            {items.map((item, index) => (
-              <Slide key={index}>
-                <SoloSlide item={item} />
+        {isLoading ? (
+          <div
+            className="d-flex justify-content-center align-items-center"
+            style={{ minHeight: "20vh" }}
+          >
+            <div className="spinner-border text-primary" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+          </div>
+        ) : (
+          <CarouselProvider
+            className="relative mt-8"
+            isIntrinsicHeight={true}
+            naturalSlideWidth={250}
+            totalSlides={items?.length}
+            visibleSlides={visibleSlides}
+          >
+            {visibleSlides < items?.length && (
+              <ButtonBack className="home-item-chevron home-item-chevron-left">
+                <ChevronLeftIcon color="black" />
+              </ButtonBack>
+            )}
+            <Slider>
+              {items.map((item, index) => (
+                <Slide key={index}>
+                  <SoloSlide item={item} />
+                </Slide>
+              ))}
+              <Slide className=" px-4" index={Math.random()}>
+                <ViewMoreCard />
               </Slide>
-            ))}
-            <Slide className=" px-4" index={Math.random()}>
-              <ViewMoreCard />
-            </Slide>
-          </Slider>
-          {visibleSlides < items?.length && (
-            <ButtonNext className="home-item-chevron home-item-chevron-right">
-              <ChevronRightIcon color="black" />
-            </ButtonNext>
-          )}
-        </CarouselProvider>
+            </Slider>
+            {visibleSlides < items?.length && (
+              <ButtonNext className="home-item-chevron home-item-chevron-right">
+                <ChevronRightIcon color="black" />
+              </ButtonNext>
+            )}
+          </CarouselProvider>
+        )}
       </div>
     </section>
   );
