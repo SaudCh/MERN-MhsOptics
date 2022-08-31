@@ -9,6 +9,7 @@ router.use(viewsController.cart);
 router.use(viewsController.pages);
 router.use(authController.isLoggedIn);
 
+router.get('/getoverview', viewsController.getOverview)
 
 router.get('/admin-login', viewsController.getLoginForm);
 

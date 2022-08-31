@@ -481,9 +481,18 @@ export default function Item() {
 
       <section className="container-fluid">
         <div className="row">
-          {category.map((item) => (
-            <ProductsCard item={item} />
-          ))}
+          {category.length !== 0 ? (
+            category.map((item) => <ProductsCard item={item} />)
+          ) : (
+            <div
+              className="d-flex align-items-center justify-content-center"
+              style={{ minHeight: "30vh" }}
+            >
+              <h1 className="text-center mt-5 text-secondary">
+                No products found
+              </h1>
+            </div>
+          )}
         </div>
       </section>
     </>

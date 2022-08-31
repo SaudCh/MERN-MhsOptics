@@ -47,7 +47,7 @@ export default function Category() {
         ) : (
           category.map((item, index) => (
             <div
-              className="col-8 col-sm-4 col-md-2 p-1 m-0 my-2"
+              className="col-6 col-sm-4 col-md-2 p-1 m-0 my-2"
               onClick={() => navigate(`/category/${item._id}`)}
             >
               <figure className="col-12 border category-image-container overflow-hidden mx-1">

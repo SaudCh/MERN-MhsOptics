@@ -10,7 +10,7 @@
   align-items: center;
 }
 .category-image-container {
-  height: 250px;
+  /* height: 30vw; */
   border-radius: 50%;
   display: flex;
   justify-content: center;

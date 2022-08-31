@@ -44,6 +44,7 @@ export default function SoloSlide({ item }) {
           <img
             src={`http://localhost:4000/img/products/${item.images[0]}`}
             className="m-0 p-3 col-12 item-image"
+            style={{minWidth:250}}
             alt=""
           />
         </figure>
