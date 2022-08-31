@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { WishContext } from '../../Components/Context/WishlistContext';
-import { HeartEmptyIcon, HeartFillIcon } from '../../Components/icons';
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { WishContext } from "../../Components/Context/WishlistContext";
+import { HeartEmptyIcon, HeartFillIcon } from "../../Components/icons";
 
 export default function SoloSlide({ item }) {
   const navigate = useNavigate();
@@ -15,21 +15,21 @@ export default function SoloSlide({ item }) {
     <div className="mx-2 home-best-items py-2 position-relative">
       <span
         className="position-absolute"
-        style={{ right: 20, top: 20, zIndex: '10' }}
+        style={{ right: 20, top: 20, zIndex: "10" }}
       >
         {isInWishlist ? (
           <button
-            style={{ backgroundColor: 'transparent', border: 'none' }}
+            style={{ backgroundColor: "transparent", border: "none" }}
             onClick={() => removeFromWishlist(item.id)}
           >
-            <HeartFillIcon style={{ fontSize: '22px' }} />
+            <HeartFillIcon style={{ fontSize: "22px" }} />
           </button>
         ) : (
           <button
-            style={{ backgroundColor: 'transparent', border: 'none' }}
+            style={{ backgroundColor: "transparent", border: "none" }}
             onClick={() => addToWishlist(item.id)}
           >
-            <HeartEmptyIcon style={{ fontSize: '22px' }} />
+            <HeartEmptyIcon style={{ fontSize: "22px" }} />
           </button>
         )}
       </span>
@@ -39,12 +39,12 @@ export default function SoloSlide({ item }) {
       >
         <figure
           className="d-flex justify-content-center align-item-center"
-          style={{ height: '200px' }}
+          style={{ height: "200px" }}
         >
           <img
-            src={`http://localhost:4000/img/products/${item.images[0]}`}
+            src={`${process.env.REACT_APP_SERVER_URL}/img/products/${item.images[0]}`}
             className="m-0 p-3 col-12 item-image"
-            style={{minWidth:250}}
+            style={{ minWidth: 250 }}
             alt=""
           />
         </figure>
