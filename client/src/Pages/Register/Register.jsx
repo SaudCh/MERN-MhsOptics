@@ -55,21 +55,21 @@ export default function Register() {
   };
 
   return (
-    <section className="container-fluid my-5">
+    <section className="container-fluid ">
       <div className="row justify-content-center align-items-center">
-        <form className="col-11 border py-5 col-md-4" onSubmit={HandleSubmit}>
+        <form className="col-12 col-md-6 border py-5 col-md-4" onSubmit={HandleSubmit}>
           <span className="text-center">
             <h5>Signup</h5>
             <p>Please fill in this form to create an account.</p>
           </span>
-          <figure className="text-center">
+          {/* <figure className="text-center">
             <img
               src={RegisterImage}
               className="align-self-center col-9"
               style={{ height: 'auto' }}
               alt=""
             />
-          </figure>
+          </figure> */}
           {errors.api && (
             <div className="alert alert-danger">
               <p className="errors">{errors.api}</p>

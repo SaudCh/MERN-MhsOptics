@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Components/Context/AuthContext";
 import { WishContext } from "../../Components/Context/WishlistContext";
 import { HeartEmptyIcon, HeartFillIcon } from "../../Components/icons";
 
@@ -8,6 +9,8 @@ export default function SoloSlide({ item }) {
 
   const { addToWishlist, wishlist, removeFromWishlist } =
     useContext(WishContext);
+
+  const { isLoggedIn } = useContext(AuthContext);
 
   const isInWishlist = wishlist.find((wish) => wish.product === item._id);
 
@@ -27,7 +30,11 @@ export default function SoloSlide({ item }) {
         ) : (
           <button
             style={{ backgroundColor: "transparent", border: "none" }}
-            onClick={() => addToWishlist(item.id)}
+            onClick={
+              isLoggedIn
+                ? () => addToWishlist(item.id)
+                : () => navigate("/login")
+            }
           >
             <HeartEmptyIcon style={{ fontSize: "22px" }} />
           </button>

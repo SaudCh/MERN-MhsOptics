@@ -33,6 +33,20 @@ export default function index() {
     <Suspense fallback={<Loading />}>
       <div>
         <Routes>
+
+          <Route
+            path="/login"
+            element={<AuthRoute component={<Login />} />}
+          />
+          <Route
+            path="/forgotpassword"
+            element={<AuthRoute component={<ForgetPassword />} />}
+          />
+          <Route
+            path="/register"
+            element={<AuthRoute component={<Register />} />}
+          />
+
           <Route path="/" element={<Home />} />
           <Route path="/" element={<Layout />}>
             <Route path="/t/:type" element={<Type />} />
@@ -48,21 +62,10 @@ export default function index() {
 
             {/* Auth Route */}
             <Route
-              path="/login"
-              element={<AuthRoute component={<Login />} />}
-            />
-            <Route
               path="/checkout-success"
-              element={<AuthRoute component={<CheckoutSuccess />} />}
+              element={<CheckoutSuccess />}
             />
-            <Route
-              path="/forgotpassword"
-              element={<AuthRoute component={<ForgetPassword />} />}
-            />
-            <Route
-              path="/register"
-              element={<AuthRoute component={<Register />} />}
-            />
+
           </Route>
 
           <Route path="/" element={<SideBarLayout />}>

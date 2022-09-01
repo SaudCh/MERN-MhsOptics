@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import './css/header.css';
-import { AuthContext } from './Context/AuthContext';
-import HeaderIcon from './Header/headerIcon';
-import Logo from '../Images/logo.png';
-import { UserIcon } from './icons';
-import { useTranslation } from 'react-i18next';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import "./css/header.css";
+import { AuthContext } from "./Context/AuthContext";
+import HeaderIcon from "./Header/headerIcon";
+import Logo from "../Images/logo.png";
+import { UserIcon } from "./icons";
+import { useTranslation } from "react-i18next";
 
 export default function Header({ background }) {
   const { t } = useTranslation();
@@ -14,7 +14,7 @@ export default function Header({ background }) {
   return (
     <nav
       className={`navbar navbar-expand-lg ${
-        background ? 'navbar-light bg-light' : 'navbar-dark home-header-style'
+        background ? "navbar-light bg-light" : "navbar-dark home-header-style"
       }`}
     >
       <div className="container-fluid">
@@ -41,26 +41,26 @@ export default function Header({ background }) {
           <ul className="navbar-nav m-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link to="/t/sunglasses" className="nav-link" aria-current="page">
-                {t('sunglasses')}
+                {t("sunglasses")}
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/t/prescription" className="nav-link">
-                {t('persctiption')}
+                {t("persctiption")}
               </Link>
             </li>
             <li className="nav-item">
               <Link
-                to={auth.isLoggedIn ? '/wishlist' : '/login'}
+                to={auth.isLoggedIn ? "/wishlist" : "/login"}
                 className="nav-link"
               >
-                {t('wishlist')}
+                {t("wishlist")}
               </Link>
             </li>
             <li className="d-md-none">
-              <Link to={auth.isLoggedIn ? '/account' : '/login'}>
+              <Link to={auth.isLoggedIn ? "/account" : "/login"}>
                 <UserIcon
-                  color={background ? 'black' : 'white'}
+                  color={background ? "black" : "white"}
                   style={{ marginRight: 10 }}
                 />
               </Link>

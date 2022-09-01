@@ -21,8 +21,8 @@ export default function OurWays() {
             </Link>
           </p>
         </div>
-        <div className="col-11 col-md-5">
-          <img src={MiddleImage} style={{ width: "100%" }} alt="" />
+        <div className="col-11 col-md-5 p-4 ">
+          <img src={MiddleImage} className="rounded" style={{ width: "100%" }} alt="" />
         </div>
       </div>
     </section>

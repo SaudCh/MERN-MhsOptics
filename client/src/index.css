@@ -67,3 +67,36 @@ img {
   border: 0;
   border-radius: 0;
 }
+
+.login-container {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login-right-container-main{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-right-container {
+  background: url(https://thumbs.gfycat.com/IgnorantJovialLhasaapso-max-1mb.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 50vh;
+}
+.auth-logo {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+@media screen and (max-width: 786px) {
+  .login-right-container-main {
+    min-height: 50vh;
+  }
+}
