@@ -75,7 +75,7 @@ img {
   background-size: cover;
 }
 
-.login-right-container-main{
+.login-right-container-main {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -89,6 +89,14 @@ img {
   background-size: contain;
   min-height: 50vh;
 }
+
+.register-right-container {
+  background: url(https://media1.giphy.com/media/kUxSoI8daZIKCdMDMY/giphy.gif?cid=6c09b9525036281ea3d757415824c2e47cb4215460f03a12&rid=giphy.gif&ct=s);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .auth-logo {
   position: absolute;
   top: 10px;

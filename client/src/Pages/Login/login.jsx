@@ -58,7 +58,7 @@ export default function Login() {
         style={{ minHeight: "100vh" }}
       >
         <form
-          className="col-11 col-md-6 px-md-5 d-flex align-items-center mb-5"
+          className="col-11 col-md-6 px-md-5 d-flex align-items-center my-5"
           onSubmit={HandleSubmit}
         >
           <div className="w-100">
@@ -140,7 +140,7 @@ export default function Login() {
         </form>
         <div
           className="col-12 col-md-6 h-100 login-right-container-main mt-0 pt-0"
-          style={{ backgroundColor: "rgba(0, 174, 249, 0.1)" }}
+          style={{ backgroundColor: "rgba(149, 187, 114, 0.3)" }}
         >
           <div
             className="login-right-container w-100 h-100"

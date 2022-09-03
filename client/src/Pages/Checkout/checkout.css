@@ -1,0 +1,13 @@
+.payment-options {
+  background-color: white;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+}
+.payment-options-active {
+  background-color: #3690ce;
+  color: white;
+}
+.payment-options-active:hover {
+  background-color: #3690ce;
+  color: white;
+}

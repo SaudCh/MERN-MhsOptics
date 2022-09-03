@@ -1,33 +1,12 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-export default function Category() {
+export default function Category(props) {
+  const categories = props.categories ? props.categories : [];
   const { t } = useTranslation();
-  const [category, setCategory] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const getProducts = async () => {
-      setIsLoading(true);
-      await axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/api/categories/all`)
-        .then(function (response) {
-          // console.log(response.data.data.data);
-          setCategory(response.data.data.data);
-        })
-        .catch(function (error) {
-          const err = {};
-          err.api = error.response.data?.message
-            ? error.response.data.message
-            : error.message;
-        });
-      setIsLoading(false);
-    };
-    getProducts();
-  }, []);
   return (
     <section className="container-fluid mt-2">
       <div className="row align-items-center justify-content-center">
@@ -38,14 +17,14 @@ export default function Category() {
           <p>{t("Rich in Style")}</p>
         </div>
 
-        {isLoading ? (
+        {props.isLoading ? (
           <div className="text-center">
             <div className="spinner-border text-primary" role="status">
               <span className="sr-only">Loading...</span>
             </div>
           </div>
         ) : (
-          category.map((item, index) => (
+          categories.map((item, index) => (
             <div
               className="col-6 col-sm-4 col-md-2 p-1 m-0 my-2"
               onClick={() => navigate(`/category/${item._id}`)}

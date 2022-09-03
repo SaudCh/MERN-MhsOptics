@@ -39,8 +39,13 @@ export default function Home() {
       {isLoading && <LoadingSpinner asOverlay />}
       <Header background={false} />
       <Background />
-      <Category categories={data?.categories} />
-      <Items products={data?.products} />
+      {!isLoading ? (
+        <>
+          <Category isLoading={isLoading} categories={data?.categories} />
+          <Items isLoading={isLoading} products={data?.products} />
+        </>
+      ) : null}
+
       <OurWays />
       <Footer />
     </>

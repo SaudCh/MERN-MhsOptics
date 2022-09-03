@@ -1,19 +1,17 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../Components/Context/CartContext";
-import { AuthContext } from "../../Components/Context/AuthContext";
 import {
   DecrementIcon,
   IncrementIcon,
   TrashIcon,
 } from "../../Components/icons";
-import PayButton from "../../Components/PayButton";
 import { formatCurrency } from "../../Components/utils/currencyFormater";
 
 export default function Cart() {
   document.title = "Cart";
   const { cart, removeAll, removeItem, total, IncQuantity, DecQuantity } =
     useContext(CartContext);
-  const { user } = useContext(AuthContext);
 
   if (cart.length === 0) {
     return (
@@ -117,13 +115,10 @@ export default function Cart() {
               <p className="p-0 m-0">Total</p>
               <p className="p-0 m-0">{formatCurrency(total)}</p>
             </div>
-            <div className="text-end">
-              <PayButton cart={cart} user={user} />
-            </div>
           </div>
-          <div className="d-flex justify-content-between">
-            <PayButton cart={cart} user={user} />
-          </div>
+          <Link to="/confirm-address" className="btn btn-outline-primary w-100 my-2">
+            Continue
+          </Link>
         </div>
       </div>
     </section>

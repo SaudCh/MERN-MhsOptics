@@ -6,7 +6,9 @@ import Layout from './layout';
 import Loading from './Loading';
 import SideBarLayout from './SideBarLayout';
 import ProtectedRoute from './ProtectedRoute';
+import ConfirmAddress from '../Pages/Checkout/confirmAddress';
 
+const Checkout = lazy(() => import('../Pages/Checkout/Checkout'));
 const Search = lazy(() => import('../Pages/Search/Search'));
 const Return = lazy(() => import('../Pages/Support/Return'));
 const Garantie = lazy(() => import('../Pages/Support/Garantie'));
@@ -53,6 +55,8 @@ export default function index() {
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/category/:id" element={<Category />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<ProtectedRoute component={<Checkout />} />} />
+            <Route path="/confirm-address" element={<ProtectedRoute component={<ConfirmAddress />} />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/returns" element={<Return />} />

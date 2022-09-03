@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import {
   CarouselProvider,
@@ -10,38 +10,17 @@ import {
 import ViewMoreCard from "../../Components/Home/ViewMoreCard";
 import useWindowDimensions from "../../Components/Hooks/useWindowDimensions";
 import { ChevronLeftIcon, ChevronRightIcon } from "../../Components/icons";
-import axios from "axios";
 import SoloSlide from "./Slide";
 import { useTranslation } from "react-i18next";
 
-function Items() {
+function Items(props) {
+  const { isLoading } = props;
+  const products = props.products ? props.products : [];
   const { t } = useTranslation();
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const getProducts = async () => {
-      setIsLoading(true);
-      await axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/api/products/`)
-        .then(function (response) {
-          // console.log(response.data.data.data);
-          setItems(response.data.data.data);
-        })
-        .catch(function (error) {
-          const err = {};
-          err.api = error.response.data?.message
-            ? error.response.data.message
-            : error.message;
-        });
-      setIsLoading(false);
-    };
-    getProducts();
-  }, []);
 
   const { width } = useWindowDimensions();
   const visibleSlides = width > 992 ? 4 : width > 768 ? 3 : width > 576 ? 2 : 1;
-  if (items?.length === 0 && isLoading === false) {
+  if (products?.length === 0 && isLoading === false) {
     return (
       <>
         <div className="col-12 mt-2 text-center">
@@ -82,16 +61,16 @@ function Items() {
             className="relative mt-8"
             isIntrinsicHeight={true}
             naturalSlideWidth={250}
-            totalSlides={items?.length}
+            totalSlides={products?.length}
             visibleSlides={visibleSlides}
           >
-            {visibleSlides < items?.length && (
+            {visibleSlides < products?.length && (
               <ButtonBack className="home-item-chevron home-item-chevron-left">
                 <ChevronLeftIcon color="black" />
               </ButtonBack>
             )}
             <Slider>
-              {items.map((item, index) => (
+              {products.map((item, index) => (
                 <Slide key={index}>
                   <SoloSlide item={item} />
                 </Slide>
@@ -100,7 +79,7 @@ function Items() {
                 <ViewMoreCard />
               </Slide>
             </Slider>
-            {visibleSlides < items?.length && (
+            {visibleSlides < products?.length && (
               <ButtonNext className="home-item-chevron home-item-chevron-right">
                 <ChevronRightIcon color="black" />
               </ButtonNext>

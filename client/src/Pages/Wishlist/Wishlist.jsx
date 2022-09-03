@@ -4,9 +4,13 @@ import { AuthContext } from "../../Components/Context/AuthContext";
 import { WishContext } from "../../Components/Context/WishlistContext";
 import axios from "axios";
 import { formatCurrency } from "../../Components/utils/currencyFormater";
+import LoadingSpinner from "../../Components/Spinner/spinner";
+import { CartContext } from "../../Components/Context/CartContext";
 
 export default function Wishlist() {
   document.title = "Wishlist";
+  const { addToCart } = useContext(CartContext);
+  const [isLoading, setIsLoading] = useState(false);
   const { removeFromWishlist } = useContext(WishContext);
   const auth = useContext(AuthContext);
   const [wishlist, setWishlist] = useState([]);
@@ -19,6 +23,7 @@ export default function Wishlist() {
 
   useEffect(() => {
     const getWishlist = async () => {
+      setIsLoading(true);
       const config = {
         headers: { Authorization: `Bearer ${auth?.token}` },
       };
@@ -37,12 +42,13 @@ export default function Wishlist() {
             ? error.response.data.message
             : error.message;
         });
+      setIsLoading(false);
     };
 
     getWishlist();
   }, [auth?.token, auth.user?.id]);
 
-  if (wishlist.length === 0) {
+  if (wishlist.length === 0 && !isLoading) {
     return (
       <div
         className="container d-flex align-items-center justify-content-center"
@@ -58,6 +64,7 @@ export default function Wishlist() {
 
   return (
     <div className="row">
+      {isLoading && <LoadingSpinner asOverlay />}
       {wishlist.map((item, index) => {
         const { product } = item;
         const { title, price, images, id } = product;
@@ -78,6 +85,7 @@ export default function Wishlist() {
             </div>
             <div className="col-7">
               <button
+                onClick={() => addToCart(product, 1)}
                 className="btn me-3 text-white btn-sm"
                 style={{ backgroundColor: "rgb(55, 59, 60)" }}
               >

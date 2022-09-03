@@ -13,7 +13,9 @@ const PayButton = ({ cart, user }) => {
 			},
 		};
 		setLoading(true);
-		debugger;
+		// debugger;
+
+		console.log("EH")
 
 		axios
 			.post(
@@ -24,12 +26,27 @@ const PayButton = ({ cart, user }) => {
 				},
 				config
 			)
-			.then((response) => {
-				if (response.data.url) {
-					window.location.href = response.data.url;
-				}
+			.then((res) => {
+				console.log(res);
+				setLoading(false);
 			})
-			.catch((err) => console.log(err.message));
+			.catch((err) => {
+				console.log(err);
+				setLoading(false);
+			});
+
+		// axios.post(`${process.env.REACT_APP_SERVER_URL}/api/orders/checkout-session`, { cart, user },
+		// 	config
+		// )
+		// 	.then((response) => {
+		// 		console.log(response);
+		// 		if (response.data.url) {
+		// 			window.location.href = response.data.url;
+		// 		}
+		// 	})
+		// 	.catch((err) => console.log(err.message));
+
+		console.log("EHe")
 		setLoading(false);
 	};
 
