@@ -16,7 +16,7 @@ export default function Checkout() {
   const { token } = useContext(AuthContext);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const year = new Date().getFullYear();
+  // const year = new Date().getFullYear();
 
   useEffect(() => {
     const fetchAddress = async () => {
@@ -101,7 +101,7 @@ export default function Checkout() {
                 Cash On Delievery
               </btn>
             </div>
-            {activeOpt === "card" ? (
+            {/* {activeOpt === "card" ? (
               <form className="mt-3">
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">
@@ -158,11 +158,11 @@ export default function Checkout() {
                   </div>
                 </div>
               </form>
-            ) : null}
+            ) : null} */}
 
-            {activeOpt === "cashondelivery" ? (
+            {/* {activeOpt === "cashondelivery" ? (
               <div className="my-3"></div>
-            ) : null}
+            ) : null} */}
           </div>
           <div className="bg-light border p-2 rounded my-3">
             <h5>Address Details</h5>
