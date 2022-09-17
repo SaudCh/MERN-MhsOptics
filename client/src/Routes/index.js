@@ -7,6 +7,7 @@ import Loading from './Loading';
 import SideBarLayout from './SideBarLayout';
 import ProtectedRoute from './ProtectedRoute';
 import ConfirmAddress from '../Pages/Checkout/confirmAddress';
+import CustomizeLens from '../Pages/ProductDetails/CustomizeLens';
 
 const Checkout = lazy(() => import('../Pages/Checkout/Checkout'));
 const Search = lazy(() => import('../Pages/Search/Search'));
@@ -53,6 +54,7 @@ export default function index() {
           <Route path="/" element={<Layout />}>
             <Route path="/t/:type" element={<Type />} />
             <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/customize/:id" element={<CustomizeLens />} />
             <Route path="/category/:id" element={<Category />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<ProtectedRoute component={<Checkout />} />} />

@@ -17,7 +17,7 @@ import Error from "../../Images/errorIcon.png";
 import { CartContext } from "../../Components/Context/CartContext";
 import { WishContext } from "../../Components/Context/WishlistContext";
 
-export default function ProductDetails() {
+export default function CustomizeLens() {
   const { addToWishlist, wishlist, removeFromWishlist } =
     useContext(WishContext);
   const { id } = useParams();
